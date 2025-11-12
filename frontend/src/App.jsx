@@ -1,14 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Landing from './pages/Landing';
+import Login from './pages/Login'; // si ya lo tienes
+import Home from './pages/Home';
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-600">
-      <h1 className="text-4xl font-bold text-white">
-        ✅ Tailwind funcionando en React + Vite
-      </h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} /> 
+        <Route path="/home" element={<Home />} />
+
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
-
-
