@@ -34,6 +34,9 @@ const menuItems = {
     { label: 'Generar Reporte', path: '/reportes/generar' },
     { label: 'Historial de Actividad', path: '/reportes/historial' },
   ],
+  Empresas: [
+    { label: 'Empresas', path: '/companies' }
+  ],
 };
 
 function Dropdown({ title, items }) {

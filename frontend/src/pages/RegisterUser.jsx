@@ -95,6 +95,7 @@ export default function RegisterUser() {
               >
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
+                <option value="superadmin">SuperAdmin</option>
               </select>
             </div>
 
