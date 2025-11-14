@@ -8,14 +8,15 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { token } = await login(email, password);
-      localStorage.setItem('token', token);
+        const { token } = await login(email, password);
+        console.log('Token recibido:', token); // 👈 Aquí lo ves en la consola del navegador
+        localStorage.setItem('token', token);
         window.location.href = '/home';
-
     } catch {
-      alert('Credenciales inválidas');
+        alert('Credenciales inválidas');
     }
-  };
+    };
+
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-80">

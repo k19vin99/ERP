@@ -1,14 +1,39 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
+import { Link } from 'react-router-dom';
 
 const menuItems = {
-  Inventario: ['Listado de Bodegas', 'Agregar Bodega', 'Listado de Artículos', 'Agregar Artículo'],
-  Solicitudes: ['Listado de Solicitudes', 'Agregar Solicitud'],
-  Colaboradores: ['Listado de Colaboradores', 'Agregar Colaborador'],
-  Facturas: ['Listado de Facturas', 'Agregar Factura'],
-  'Gestión de Tickets': ['Listado de Tickets', 'Crear Ticket'],
-  Finanzas: ['Resumen Financiero', 'Cuentas por Pagar', 'Cuentas por Cobrar'],
-  Reportes: ['Generar Reporte', 'Historial de Actividad'],
+  Inventario: [
+    { label: 'Listado de Bodegas', path: '/bodegas' },
+    { label: 'Agregar Bodega', path: '/bodegas/nueva' },
+    { label: 'Listado de Artículos', path: '/articulos' },
+    { label: 'Agregar Artículo', path: '/articulos/nuevo' },
+  ],
+  Solicitudes: [
+    { label: 'Listado de Solicitudes', path: '/solicitudes' },
+    { label: 'Agregar Solicitud', path: '/solicitudes/nueva' },
+  ],
+  Colaboradores: [
+    { label: 'Listado de Colaboradores', path: '/collaborators' },
+    { label: 'Agregar Colaborador', path: '/colaboradores/nuevo' },
+  ],
+  Facturas: [
+    { label: 'Listado de Facturas', path: '/facturas' },
+    { label: 'Agregar Factura', path: '/facturas/nueva' },
+  ],
+  'Gestión de Tickets': [
+    { label: 'Listado de Tickets', path: '/tickets' },
+    { label: 'Crear Ticket', path: '/tickets/nuevo' },
+  ],
+  Finanzas: [
+    { label: 'Resumen Financiero', path: '/finanzas/resumen' },
+    { label: 'Cuentas por Pagar', path: '/finanzas/pagar' },
+    { label: 'Cuentas por Cobrar', path: '/finanzas/cobrar' },
+  ],
+  Reportes: [
+    { label: 'Generar Reporte', path: '/reportes/generar' },
+    { label: 'Historial de Actividad', path: '/reportes/historial' },
+  ],
 };
 
 function Dropdown({ title, items }) {
@@ -25,14 +50,15 @@ function Dropdown({ title, items }) {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute z-10 mt-2 w-56 origin-top-right bg-white shadow-lg rounded">
-          {items.map((item, idx) => (
+          {items.map(({ label, path }, idx) => (
             <Menu.Item key={idx}>
               {({ active }) => (
-                <div
-                  className={`px-4 py-2 text-sm ${active ? 'bg-blue-100' : 'text-gray-700'}`}
+                <Link
+                  to={path}
+                  className={`block px-4 py-2 text-sm ${active ? 'bg-blue-100' : 'text-gray-700'}`}
                 >
-                  {item}
-                </div>
+                  {label}
+                </Link>
               )}
             </Menu.Item>
           ))}
@@ -42,7 +68,7 @@ function Dropdown({ title, items }) {
   );
 }
 
-export default function Navbar({ onLogout }) {
+export default function NavbarHome({ onLogout }) {
   return (
     <nav className="bg-blue-700 text-white px-6 py-4 flex justify-between items-center">
       <span className="text-xl font-bold">KICSERP</span>
